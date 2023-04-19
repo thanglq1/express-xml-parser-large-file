@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - $EXTERNAL_PORT:$EXTERNAL_PORT
+    env_file:
+      - .env
+    environment: 
+      - EXTERNAL_PORT=${EXTERNAL_PORT}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - PGHOST=${PGHOST}
+    depends_on: 
+      - db
+    volumes:
+    # Copy source code to container 
+      - .:/usr/src/app
+    # Can not override node modules in container
+      - /usr/src/app/node_modules
+  db: 
+    container_name: postgres
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - abn_data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+     - "8080:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  abn_data: {}
+  pgadmin_data: {}
+
+  
+    

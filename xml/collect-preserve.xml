@@ -1,0 +1,77 @@
+<Transfer>             
+    <ABR recordLastUpdatedDate="20180216" replaced="N">
+        <ABN status="ACT" ABNStatusFromDate="19991101">11000000948</ABN>
+        <EntityType>
+            <EntityTypeInd>PUB</EntityTypeInd>
+            <EntityTypeText>Australian Public Company</EntityTypeText>
+        </EntityType>
+        <MainEntity>
+            <NonIndividualName type="MN">
+                <NonIndividualNameText>QBE INSURANCE (INTERNATIONAL) LTD</NonIndividualNameText>
+            </NonIndividualName>
+            <BusinessAddress>
+                <AddressDetails>
+                    <State>NSW</State>
+                    <Postcode>2000</Postcode>
+                </AddressDetails>
+            </BusinessAddress>
+        </MainEntity>
+        <ASICNumber ASICNumberType="undetermined">000000948</ASICNumber>
+        <GST status="ACT" GSTStatusFromDate="20000701" />
+        <OtherEntity>
+            <NonIndividualName type="TRD">
+                <NonIndividualNameText>QBE INSURANCE (INTERNATIONAL) LIMITED</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+    </ABR>
+    <ABR recordLastUpdatedDate="20220818" replaced="N">
+        <ABN status="ACT" ABNStatusFromDate="20000303">11000016722</ABN>
+        <EntityType>
+            <EntityTypeInd>PUB</EntityTypeInd>
+            <EntityTypeText>Australian Public Company</EntityTypeText>
+        </EntityType>
+        <MainEntity>
+            <NonIndividualName type="MN">
+                <NonIndividualNameText>INSURANCE AUSTRALIA LIMITED</NonIndividualNameText>
+            </NonIndividualName>
+            <BusinessAddress>
+                <AddressDetails>
+                    <State>NSW</State>
+                    <Postcode>2000</Postcode>
+                </AddressDetails>
+            </BusinessAddress>
+        </MainEntity>
+        <ASICNumber ASICNumberType="undetermined">000016722</ASICNumber>
+        <GST status="ACT" GSTStatusFromDate="20000701" />
+        <OtherEntity>
+            <NonIndividualName type="TRD">
+                <NonIndividualNameText>NRMA INSURANCE LTD</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="OTN">
+                <NonIndividualNameText>NRMA INSURANCE LTD-WORKERS COMPENSATION</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>""Wesfarmers Federation Insurance""</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Aim Dealer Services</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Aim Insurance</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Airport Buddy</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+    </ABR>
+</Transfer>
