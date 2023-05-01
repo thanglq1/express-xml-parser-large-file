@@ -10,82 +10,97 @@ const Abn = db.define("abns", {
   },
 
   ABRRecordLastUpdatedDate: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(8),
     allowNull: true,
   },
 
-  ABRReplaced: {
-    type: Sequelize.STRING,
+  ABN: {
+    type: Sequelize.STRING(11),
     allowNull: true,
   },
 
   ABNStatus: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(3),
     allowNull: true,
   },
 
   ABNStatusFromDate: {
-    type: Sequelize.STRING,
-    allowNull: true,
-  },
-
-  ABNText: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(8),
     allowNull: true,
   },
 
   EntityTypeInd: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(4),
     allowNull: true,
   },
 
   EntityTypeText: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(100),
     allowNull: true,
   },
 
-  NonIndividualNameType: {
-    type: Sequelize.STRING,
+  MainEntityNonIndividualNameType: {
+    type: Sequelize.STRING(3),
     allowNull: true,
   },
 
-  NonIndividualNameText: {
-    type: Sequelize.STRING,
+  MainEntityNonIndividualNameText: {
+    type: Sequelize.STRING(200),
     allowNull: true,
   },
 
-  BusinessAddressState: {
-    type: Sequelize.STRING,
+  LegalEntityIndividualNameType: {
+    type: Sequelize.STRING(3),
     allowNull: true,
   },
 
-  BusinessAddressPostcode: {
-    type: Sequelize.STRING,
+  LegalEntityNameTitle: {
+    type: Sequelize.STRING(50),
     allowNull: true,
   },
 
-  ASICNumberType: {
-    type: Sequelize.STRING,
+  LegalEntityGivenName: {
+    type: Sequelize.STRING(100),
     allowNull: true,
   },
 
-  ASICNumberText: {
-    type: Sequelize.STRING,
+  LegalEntityFamilyName: {
+    type: Sequelize.STRING(50),
+    allowNull: true,
+  },
+
+  ASICNumber: {
+    type: Sequelize.STRING(9),
     allowNull: true,
   },
 
   GSTStatus: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(3),
     allowNull: true,
   },
 
   GSTStatusFromDate: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(8),
+    allowNull: true,
+  },
+
+  DGR: {
+    type: Sequelize.ARRAY(Sequelize.JSON),
     allowNull: true,
   },
 
   OtherEntity: {
     type: Sequelize.ARRAY(Sequelize.JSON),
+    allowNull: true,
+  },
+
+  BusinessAddressState: {
+    type: Sequelize.STRING(3),
+    allowNull: true,
+  },
+
+  BusinessAddressPostcode: {
+    type: Sequelize.STRING(50),
     allowNull: true,
   },
 });

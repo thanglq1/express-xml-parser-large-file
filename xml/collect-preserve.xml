@@ -1,4 +1,177 @@
-<Transfer>             
+<Transfer>
+    <ABR recordLastUpdatedDate="20221117" replaced="N">
+        <ABN status="ACT" ABNStatusFromDate="20000422">11001832828</ABN>
+        <EntityType>
+            <EntityTypeInd>PUB</EntityTypeInd>
+            <EntityTypeText>Australian Public Company</EntityTypeText>
+        </EntityType>
+        <MainEntity>
+            <NonIndividualName type="MN">
+                <NonIndividualNameText>PACIFIC GROUP OF CHRISTIAN SCHOOLS LIMITED</NonIndividualNameText>
+            </NonIndividualName>
+            <BusinessAddress>
+                <AddressDetails>
+                    <State>NSW</State>
+                    <Postcode>2158</Postcode>
+                </AddressDetails>
+            </BusinessAddress>
+        </MainEntity>
+        <ASICNumber ASICNumberType="undetermined">001832828</ASICNumber>
+        <GST status="ACT" GSTStatusFromDate="20000701" />
+        <DGR DGRStatusFromDate="20000701">
+            <NonIndividualName type="DGR">
+                <NonIndividualNameText>PACIFIC HILLS CHRISTIAN EDUCATION LTD BUILDING FUND</NonIndividualNameText>
+            </NonIndividualName>
+        </DGR>
+        <DGR DGRStatusFromDate="20000701">
+            <NonIndividualName type="DGR">
+                <NonIndividualNameText>PACIFIC HILLS CHRISTIAN EDUCATION LTD LIBRARY FUND</NonIndividualNameText>
+            </NonIndividualName>
+        </DGR>
+        <DGR DGRStatusFromDate="20070531">
+            <NonIndividualName type="DGR">
+                <NonIndividualNameText>PACIFIC HILLS SCHOLARSHIP FUND</NonIndividualNameText>
+            </NonIndividualName>
+        </DGR>
+        <OtherEntity>
+            <NonIndividualName type="TRD">
+                <NonIndividualNameText>PACIFIC HILLS CHRISTIAN SCHOOL</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>GLOBAL CHRISTIAN SCHOOLS NETWORK</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>HANNAHS SCHOOL SUPPLIES</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>New Hope Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>OneMaker Academy</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Berowra Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Brook Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Coast Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Group of Christian Schools</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Gulgangali Jarjums Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>PACIFIC HILLS</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>PACIFIC HILLS CHRISTIAN SCHOOL</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Hope Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Online Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Valley Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacific Vision Foundation</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacifica Cafe</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Pacifica The Missions Cafe</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Southland College</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>THE CHRISTIAN EDUCATORS FORUM</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>THE EDUCATORS' FORUM</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>THE EXCELLENCE CENTRE</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+        <OtherEntity>
+            <NonIndividualName type="BN">
+                <NonIndividualNameText>Valley Hope Christian School</NonIndividualNameText>
+            </NonIndividualName>
+        </OtherEntity>
+    </ABR>
+
+    <ABR recordLastUpdatedDate="20181025" replaced="N">
+        <ABN status="CAN" ABNStatusFromDate="20161231">11001032430</ABN>
+        <EntityType>
+            <EntityTypeInd>IND</EntityTypeInd>
+            <EntityTypeText>Individual/Sole Trader</EntityTypeText>
+        </EntityType>
+        <LegalEntity>
+            <IndividualName type="LGL">
+                <GivenName>JOHN</GivenName>
+                <GivenName>MCLEOD</GivenName>
+                <FamilyName>DUFF</FamilyName>
+            </IndividualName>
+            <BusinessAddress>
+                <AddressDetails>
+                    <State>WA</State>
+                    <Postcode>6084</Postcode>
+                </AddressDetails>
+            </BusinessAddress>
+        </LegalEntity>
+        <GST status="CAN" GSTStatusFromDate="20161231" />
+    </ABR>
+
     <ABR recordLastUpdatedDate="20180216" replaced="N">
         <ABN status="ACT" ABNStatusFromDate="19991101">11000000948</ABN>
         <EntityType>

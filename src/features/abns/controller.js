@@ -4,9 +4,17 @@ exports.getAll = async (req, res, next) => {
   try {
     const page = +req.query.page || 1;
     const perPage = req.query.perPage || 10;
+    const abn = req.query.abn;
+
+    let where = {};
+    if (abn) {
+      where = { ...where, ABN: abn };
+    }
+
     const abns = await Abn.findAndCountAll({
       offset: (page - 1) * perPage,
       limit: perPage,
+      where,
     });
     return res.status(200).json(abns);
   } catch (error) {

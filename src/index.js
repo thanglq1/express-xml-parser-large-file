@@ -21,12 +21,15 @@ app.use("/abns", AbnRoute);
 
 (async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
 
     app.listen(process.env.EXTERNAL_PORT || 3001);
 
     console.log("server running...");
     const abnController = require("./features/abns/controller");
+    // const csvFilename = `${process.cwd()}/csv/20230412_Public01.csv`;
+    // const csvWriter = require("./utils/csv-writer");
+    // csvWriter.wirteHeaderCSV(csvFilename);
 
     let allAbnItems = [];
 
@@ -34,14 +37,17 @@ app.use("/abns", AbnRoute);
       `${process.cwd()}/xml/20230412_Public01.xml`,
       (itemParsered) => {
         allAbnItems.push(itemParsered);
+        // csvWriter.wirteAppendCSV(itemParsered, csvFilename);
       },
-      (allItemsParsered) => {
+      async (allItemsParsered) => {
         while (allAbnItems.length > 0) {
-          const bulkInsertSize = 5000; // insert 5.000 records until allAbnItems is empty
+          const bulkInsertSize = 1000; // insert 1.000 records until allAbnItems is empty
           const bulkItemsInsert = allAbnItems.splice(0, bulkInsertSize);
-          abnController.bulkCreate(bulkItemsInsert);
+          await abnController.bulkCreate(bulkItemsInsert);
         }
         console.log("DONE:::", allItemsParsered.length);
+
+        // After parse is completed. We can use pg-copy to faster than bulk insert data to postgres database in here
       }
     );
   } catch (error) {

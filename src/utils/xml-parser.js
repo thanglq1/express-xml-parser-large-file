@@ -12,154 +12,250 @@ exports.parserXml = async (xmlFile, onItemParser, onDone) => {
   xml.collect("ABN");
   xml.collect("EntityType");
   xml.collect("MainEntity");
+  xml.collect("LegalEntity");
+  // some items have multiple GiveName
+  xml.collect("GivenName");
   xml.collect("ASICNumber");
   xml.collect("GST");
+  xml.collect("DGR");
   xml.collect("OtherEntity");
 
   xml.on("endElement: ABR", function (item) {
     let result = {
       // ABR
       ABRRecordLastUpdatedDate: undefined,
-      ABRReplaced: undefined,
 
-      //   ABN
+      // ABN
+      ABN: undefined,
       ABNStatus: undefined,
       ABNStatusFromDate: undefined,
-      ABNText: undefined,
 
-      //   EntityType
+      // EntityType
       EntityTypeInd: undefined,
       EntityTypeText: undefined,
 
-      //   MainEntity
-      NonIndividualNameType: undefined,
-      NonIndividualNameText: undefined,
+      // MainEntity
+      MainEntityNonIndividualNameType: undefined,
+      MainEntityNonIndividualNameText: undefined,
       BusinessAddressState: undefined,
       BusinessAddressPostcode: undefined,
 
-      //   ASICNumber
-      ASICNumberType: undefined,
-      ASICNumberText: undefined,
+      // LegalEntity
+      LegalEntityIndividualNameType: undefined,
+      LegalEntityNameTitle: undefined,
+      LegalEntityGivenName: undefined,
+      LegalEntityFamilyName: undefined,
 
-      //   GST
+      // ASICNumber
+      ASICNumber: undefined,
+
+      // GST
       GSTStatus: undefined,
       GSTStatusFromDate: undefined,
 
-      // OtherEntity
+      // DGR (multipe)
+      DGR: undefined,
+
+      // OtherEntity (multiple)
       OtherEntity: undefined,
     };
 
-    const { recordLastUpdatedDate, replaced } = item.$;
+    const { recordLastUpdatedDate } = item.$;
 
+    // ABR
     result = {
       ...result,
       ABRRecordLastUpdatedDate: recordLastUpdatedDate,
-      ABRReplaced: replaced,
     };
 
     //   ABN node
     if (item && item.ABN) {
-      item.ABN.forEach((element) => {
-        if (element.$text && element.$) {
-          const abn = element.$text;
-          const { status, ABNStatusFromDate } = element.$;
+      try {
+        item.ABN.forEach((element) => {
+          if (element.$text && element.$) {
+            const abn = element.$text;
+            const { status, ABNStatusFromDate } = element.$;
 
-          result = {
-            ...result,
-            ABNStatus: status,
-            ABNStatusFromDate: ABNStatusFromDate,
-            ABNText: abn,
-          };
-        }
-      });
+            result = {
+              ...result,
+              ABNStatus: status,
+              ABNStatusFromDate: ABNStatusFromDate,
+              ABN: abn,
+            };
+          }
+        });
+      } catch (error) {
+        console.log("ABN NODE ERROR:::", error);
+      }
     }
 
     //   EntityType node
     if (item && item.EntityType) {
-      item.EntityType.forEach((element) => {
-        const { EntityTypeInd, EntityTypeText } = element;
+      try {
+        item.EntityType.forEach((element) => {
+          const { EntityTypeInd, EntityTypeText } = element;
 
-        result = {
-          ...result,
-          EntityTypeInd: EntityTypeInd,
-          EntityTypeText: EntityTypeText,
-        };
-      });
+          result = {
+            ...result,
+            EntityTypeInd: EntityTypeInd,
+            EntityTypeText: EntityTypeText,
+          };
+        });
+      } catch (error) {
+        console.log("ENTITYTYPE NODE ERROR:::", error);
+      }
     }
 
     //   MainEntity node
     if (item && item.MainEntity) {
-      item.MainEntity.forEach((element) => {
-        const { NonIndividualName, BusinessAddress } = element;
-        const NonIndividualNameType = NonIndividualName.$.type;
-        const NonIndividualNameText = NonIndividualName.NonIndividualNameText;
-        const BusinessAddressState = BusinessAddress.AddressDetails.State;
-        const BusinessAddressPostcode = BusinessAddress.AddressDetails.Postcode;
+      try {
+        item.MainEntity.forEach((element) => {
+          const { NonIndividualName, BusinessAddress } = element;
+          const NonIndividualNameType = NonIndividualName.$.type;
+          const NonIndividualNameText = NonIndividualName.NonIndividualNameText;
+          const BusinessAddressState = BusinessAddress.AddressDetails.State;
+          const BusinessAddressPostcode =
+            BusinessAddress.AddressDetails.Postcode;
 
-        result = {
-          ...result,
-          NonIndividualNameType: NonIndividualNameType,
-          NonIndividualNameText: NonIndividualNameText,
-          BusinessAddressState: BusinessAddressState,
-          BusinessAddressPostcode: BusinessAddressPostcode,
-        };
-      });
+          result = {
+            ...result,
+            MainEntityNonIndividualNameType: NonIndividualNameType,
+            MainEntityNonIndividualNameText: NonIndividualNameText,
+            BusinessAddressState: BusinessAddressState,
+            BusinessAddressPostcode: BusinessAddressPostcode,
+          };
+        });
+      } catch (error) {
+        console.log("MAINENTITY NODE ERROR:::", error);
+      }
+    }
+
+    // LegalEntity node
+    if (item && item.LegalEntity) {
+      try {
+        item.LegalEntity.forEach((element) => {
+          const { IndividualName, BusinessAddress } = element;
+          const LegalEntityIndividualNameType = IndividualName.$.type;
+          const NameTitle = IndividualName.NameTitle;
+          const FamilyName = IndividualName.FamilyName;
+          let GivenName = IndividualName.GivenName;
+          if (Array.isArray(GivenName)) {
+            GivenName = GivenName.join("-");
+          }
+          const BusinessAddressState = BusinessAddress.AddressDetails.State;
+          const BusinessAddressPostcode =
+            BusinessAddress.AddressDetails.Postcode;
+
+          result = {
+            ...result,
+            LegalEntityIndividualNameType: LegalEntityIndividualNameType,
+            LegalEntityNameTitle: NameTitle,
+            LegalEntityGivenName: GivenName,
+            LegalEntityFamilyName: FamilyName,
+            BusinessAddressState: BusinessAddressState,
+            BusinessAddressPostcode: BusinessAddressPostcode,
+          };
+        });
+      } catch (error) {
+        console.log("LEGALENTITY NODE ERROR:::", error);
+      }
     }
 
     //   ASICNumber node
     if (item && item.ASICNumber) {
-      item.ASICNumber.forEach((element) => {
-        if (element.$text && element.$) {
-          const ASICNumberType = element.$.ASICNumberType;
-          const ASICNumberText = element.$text;
+      try {
+        item.ASICNumber.forEach((element) => {
+          if (element.$text && element.$) {
+            const ASICNumberText = element.$text;
 
-          result = {
-            ...result,
-            ASICNumberType: ASICNumberType,
-            ASICNumberText: ASICNumberText,
-          };
-        }
-      });
+            result = {
+              ...result,
+              ASICNumber: ASICNumberText,
+            };
+          }
+        });
+      } catch (error) {
+        console.log("ASICNUMBER NODE ERROR:::", error);
+      }
     }
 
     //   GST node
     if (item && item.GST) {
-      item.GST.forEach((element) => {
-        if (element.$) {
-          const { status, GSTStatusFromDate } = element.$;
+      try {
+        item.GST.forEach((element) => {
+          if (element.$) {
+            const { status, GSTStatusFromDate } = element.$;
 
-          result = {
-            ...result,
-            GSTStatus: status,
-            GSTStatusFromDate: GSTStatusFromDate,
-          };
-        }
-      });
+            result = {
+              ...result,
+              GSTStatus: status,
+              GSTStatusFromDate: GSTStatusFromDate,
+            };
+          }
+        });
+      } catch (error) {
+        console.log("GST NODE ERROR:::", error);
+      }
+    }
+
+    // DGR node
+    let allDGRItems = [];
+    if (item && item.DGR) {
+      try {
+        item.DGR.forEach((element) => {
+          const { DGRStatusFromDate } = element.$;
+          if (
+            element &&
+            element.NonIndividualName &&
+            element.NonIndividualName.$
+          ) {
+            const NonIndividualNameTextType = element.NonIndividualName.$.type;
+            const NonIndividualNameText =
+              element.NonIndividualName.NonIndividualNameText;
+
+            allDGRItems.push({
+              DGRStatusFromDate: DGRStatusFromDate,
+              NonIndividualNameType: NonIndividualNameTextType,
+              NonIndividualNameText: NonIndividualNameText,
+            });
+          }
+        });
+        result = {
+          ...result,
+          DGR: allDGRItems,
+        };
+      } catch (error) {
+        console.log("DGR NODE ERROR:::", error);
+      }
     }
 
     //   OtherEntity node
     let allOtherItems = [];
     if (item && item.OtherEntity) {
-      item.OtherEntity.forEach((element) => {
-        if (
-          element &&
-          element.NonIndividualName &&
-          element.NonIndividualName.$
-        ) {
-          const NonIndividualNameTextType = element.NonIndividualName.$.type;
-          const NonIndividualNameText =
-            element.NonIndividualName.NonIndividualNameText;
+      try {
+        item.OtherEntity.forEach((element) => {
+          if (
+            element &&
+            element.NonIndividualName &&
+            element.NonIndividualName.$
+          ) {
+            const NonIndividualNameTextType = element.NonIndividualName.$.type;
+            const NonIndividualNameText =
+              element.NonIndividualName.NonIndividualNameText;
 
-          allOtherItems.push({
-            NonIndividualName: NonIndividualNameTextType,
-            NonIndividualNameText: NonIndividualNameText,
-          });
-        }
-      });
-      result = {
-        ...result,
-        OtherEntity: allOtherItems,
-      };
+            allOtherItems.push({
+              NonIndividualNameType: NonIndividualNameTextType,
+              NonIndividualNameText: NonIndividualNameText,
+            });
+          }
+        });
+        result = {
+          ...result,
+          OtherEntity: allOtherItems,
+        };
+      } catch (error) {
+        console.log("OTHERENTITY NODE ERROR:::", error);
+      }
     }
 
     onItemParser(result);
